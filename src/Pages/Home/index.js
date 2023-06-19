@@ -90,7 +90,7 @@ const Main = (props) => {
   const [matchingBonus, set_matchingBonus] = useState({});
 
   useEffect(() => {
-    console.log(props.response.firstName);
+    // console.log(props.response.firstName);
 
     getData();
   }, [props.provider, props.address]);
@@ -187,7 +187,7 @@ const Main = (props) => {
       set_Reg(is_reg);
 
       set_userId(user_id);
-      console.log("total_ref " + props.response.firstName);
+      // console.log("total_ref " + props.response.firstName);
       set_uplinerId(upliner_id);
       set_response(props.response);
       setLoader(false);
@@ -397,7 +397,7 @@ const Main = (props) => {
                   <div className="box-btm flex flex-col">
                     <div className="box-lbl">My ID: {userId}</div>
 
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <div className="amount">
                         {response.firstName != ""
                           ? response.firstName
@@ -408,7 +408,7 @@ const Main = (props) => {
                           <CheckIcon />
                         </div>
                       ) : null}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
 
