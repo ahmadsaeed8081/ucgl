@@ -1,0 +1,118 @@
+.package-sec {
+  height: 100%;
+  width: 100%;
+  min-width: 860px;
+  padding: 30px;
+  background: #fff;
+  @include media("<=phoneH") {
+    min-width: 100%;
+    min-height: 650px;
+    padding: 20px;
+  }
+  .page-hdr {
+    .sec-tag {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 51px;
+      color: #353535;
+    }
+  }
+  .tabs {
+    padding: 40px 0;
+    gap: 30px;
+    @include media("<=phoneH") {
+      padding: 20px 0;
+      gap: 14px;
+    }
+    .tab-item {
+      width: 100px;
+      min-width: max-content;
+      cursor: pointer;
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 48px;
+      text-align: center;
+      color: #000000;
+      border-bottom: 5px solid transparent;
+      @include anim;
+      &.active {
+        border-color: $themeColor;
+      }
+      @include media("<=phoneH") {
+        font-size: 14px;
+        width: 60px;
+        line-height: 38px;
+        border-bottom: 3px solid transparent;
+      }
+      .lbl {
+      }
+    }
+  }
+  .package_grid {
+    overflow: hidden;
+    overflow-y: auto;
+    height: 300px;
+    grid-gap: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    //     padding-bottom: 40px;
+    @include media("<=phoneH") {
+      height: 500px;
+      grid-gap: 30px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .pack-box {
+      width: 100%;
+      height: 300px;
+      border: 3px solid #dbdbdb;
+      border-radius: 20px;
+      padding: 20px;
+      @include media("<=phoneH") {
+        height: 280px;
+      }
+      .pack-name {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 38px;
+        color: #000000;
+        text-align: center;
+        @include media("<=phoneH") {
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
+      .pack-center {
+        flex: 1;
+        .amount {
+          font-family: "Bebas Neue";
+          font-style: normal;
+          font-weight: 700;
+          font-size: 80px;
+          line-height: 40px;
+          text-align: center;
+          color: #000000;
+          @include media("<=phoneH") {
+            font-size: 45px;
+            line-height: 30px;
+          }
+        }
+      }
+      .btn-buy {
+        font-weight: 600;
+        font-size: 18px;
+        padding: 14px 20px;
+        border-radius: 10px;
+        @include media("<=phoneH") {
+          font-size: 14px;
+          padding: 12px 20px;
+        }
+      }
+    }
+  }
+}

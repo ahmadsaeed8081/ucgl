@@ -1,0 +1,47 @@
+// Footer
+.footer-comp {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 410px;
+  padding: 20px 0px;
+  background: #282828;
+  z-index: 999999;
+
+  .wrap {
+    @include media("<=phoneH") {
+      flex-direction: column;
+    }
+    .top-sec {
+      padding-bottom: 10px;
+      .logo-img {
+        height: 70px;
+      }
+    }
+    .center-sec {
+      padding: 60px 0;
+      .social-icons {
+        gap: 30px;
+        .icon {
+          svg {
+            height: 24px;
+            width: 24px;
+          }
+        }
+      }
+    }
+    .btm-sec {
+      width: 100%;
+      border-top: 2px solid #ffff;
+      .rights-tag {
+        margin-top: 40px;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 36px;
+        text-align: center;
+        color: #ffffff;
+      }
+    }
+  }
+}

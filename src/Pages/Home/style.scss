@@ -1,0 +1,348 @@
+.lading-page {
+  width: 100%;
+  // height: 100vh;
+  // min-height: 1040px;
+  min-height: 730px;
+  position: relative;
+  @include media("<=phoneH") {
+  }
+  ._bg_vector {
+    position: absolute;
+    height: 1000px;
+    .top-vector {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 140px;
+      width: 50%;
+      background-image: url("../../../public/images/homebg1.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: left;
+      @include media(">=phone", "<=480px") {
+        height: 15%;
+        width: 40%;
+      }
+    }
+    .btm-vector {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 770px;
+      width: 100%;
+      background-image: url("../../../public/images/homebg2.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: unset;
+      @include media(">=phone", "<=480px") {
+        height: 50%;
+        width: 90%;
+      }
+    }
+  }
+  .page-body {
+    z-index: 100;
+    .wrap {
+      .sec-tag {
+        font-family: "Poppins";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 51px;
+        color: #353535;
+      }
+      .page-hdr {
+        padding: 12px 0;
+        .sec-tag {
+          font-size: 18px;
+        }
+        .btn-plan {
+          display: flex !important;
+          align-items: center;
+          border-radius: 8px;
+          padding: 6px 18px;
+          @include media("<=phoneH") {
+            padding: 6px 10px;
+          }
+          .btn-icon {
+            margin-right: 8px;
+            svg {
+              height: 16px;
+              width: 16px;
+              path {
+              }
+            }
+          }
+          .btn-lbl {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 29px;
+            color: #ffffff;
+            @include media("<=phoneH") {
+              font-size: 14px;
+            }
+          }
+        }
+        .search-box {
+          @include media("<=phoneH") {
+            display: none;
+          }
+        }
+      }
+      .reports-grid {
+        grid-gap: 30px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        @include media("<=tablet") {
+          grid-gap: 40px;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @include media("<=phoneH") {
+          grid-gap: 10px;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-box {
+          width: 100%;
+          height: 210px;
+          background: #ffffff;
+          box-shadow: 3px 6px 22px rgba(0, 0, 0, 0.15);
+          border-radius: 30px;
+          padding: 30px;
+          gap: 30px;
+          @include media("<=phoneH") {
+            height: 160px;
+            padding: 16px 12px;
+            border-radius: 10px;
+          }
+          .box-top {
+            flex: 1;
+            .icon {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              svg {
+                width: 60px;
+                height: 60px;
+              }
+              @include media("<=phoneH") {
+                svg {
+                  width: 40px;
+                  height: 40px;
+                }
+              }
+            }
+            .btn {
+              padding: 6px 16px;
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 14px;
+              line-height: 27px;
+              color: #ffffff;
+              background: #484848;
+              border-radius: 10px;
+              border-color: #484848;
+              @include media("<=phoneH") {
+                padding: 4px 6px;
+                font-size: 12px;
+              }
+            }
+          }
+          .box-btm {
+            flex: 1;
+            .box-lbl {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 30px;
+              color: #484848;
+              @include media("<=phoneH") {
+                font-size: 12px;
+              }
+            }
+            .amount {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 600;
+              font-size: 26px;
+              line-height: 34px;
+              color: #484848;
+              @include media("<=phoneH") {
+                font-size: 15px;
+              }
+            }
+            .icon-check {
+              margin-left: 8px;
+              svg {
+                height: 18px;
+                width: 18px;
+              }
+            }
+          }
+        }
+      }
+      .copy-referral-link-sec {
+        padding-top: 40px;
+        padding-bottom: 50px;
+        @include media("<=phoneH") {
+          padding-top: 20px;
+          padding-bottom: 30px;
+        }
+        .link-box {
+          width: 600px;
+          background: $themeColor;
+          padding: 12px 16px;
+          gap: 20px;
+          border-radius: 12px;
+          @include media("<=phoneH") {
+            width: 100%;
+            gap: 12px;
+            padding: 8px 12px;
+          }
+          .link-left {
+            flex: 1;
+            .link-lbl {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 300;
+              font-size: 16px;
+              line-height: 36px;
+              color: #ffffff;
+              margin-right: 18px;
+              @include media("<=phoneH") {
+                font-size: 12px;
+              }
+            }
+            .link-code {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 45px;
+              color: #ffffff;
+              @include media("<=phoneH") {
+                font-size: 15px;
+              }
+            }
+          }
+          .link-right {
+            .copy-btn {
+              padding: 8px;
+              border-radius: 10px;
+              background: #ffffff;
+              cursor: pointer;
+              svg {
+                height: 28px;
+                width: 28px;
+              }
+              @include media("<=phoneH") {
+                svg {
+                  height: 18px;
+                  width: 18px;
+                }
+              }
+            }
+          }
+        }
+      }
+      .package-sec1 {
+        .page-hdr {
+        }
+        .tabs {
+          padding-bottom: 40px;
+          gap: 30px;
+          @include media("<=phoneH") {
+            padding-bottom: 20px;
+            gap: 14px;
+          }
+          .tab-item {
+            width: 100px;
+            min-width: max-content;
+            cursor: pointer;
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 48px;
+            text-align: center;
+            color: #000000;
+            border-bottom: 5px solid transparent;
+            @include anim;
+            &.active {
+              border-color: $themeColor;
+            }
+            @include media("<=phoneH") {
+              font-size: 14px;
+              width: 60px;
+              line-height: 38px;
+              border-bottom: 3px solid transparent;
+            }
+            .lbl {
+            }
+          }
+        }
+        .package_grid {
+          grid-gap: 40px;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          padding-bottom: 40px;
+          @include media("<=phoneH") {
+            grid-template-columns: repeat(1, 1fr);
+          }
+          .pack-box {
+            width: 100%;
+            height: 380px;
+            border: 3px solid #dbdbdb;
+            border-radius: 20px;
+            padding: 20px;
+            @include media("<=phoneH") {
+              height: 330px;
+            }
+            .pack-name {
+              font-family: "Poppins";
+              font-style: normal;
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 38px;
+              color: #000000;
+              text-align: center;
+              @include media("<=phoneH") {
+                font-size: 26px;
+                line-height: 28px;
+              }
+            }
+            .pack-center {
+              flex: 1;
+              .amount {
+                font-family: "Bebas Neue";
+                font-style: normal;
+                font-weight: 700;
+                font-size: 110px;
+                line-height: 40px;
+                text-align: center;
+                color: #000000;
+                @include media("<=phoneH") {
+                  font-size: 85px;
+                  line-height: 30px;
+                }
+              }
+            }
+            .btn-buy {
+              font-weight: 600;
+              font-size: 18px;
+              padding: 14px 20px;
+              border-radius: 10px;
+              @include media("<=phoneH") {
+                font-size: 14px;
+                padding: 12px 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

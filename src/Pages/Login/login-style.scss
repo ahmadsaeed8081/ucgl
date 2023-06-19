@@ -1,0 +1,177 @@
+.login-page {
+  height: 100vh;
+  min-height: 730px;
+  ._bg_vector {
+    position: relative;
+    .page-hdr {
+      z-index: 100;
+      padding: 30px;
+      @include media("<=phoneH") {
+        padding: 20px;
+      }
+      .btn-connect {
+        background: #000000;
+        border-radius: 13px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: center;
+        color: #ffffff;
+        padding: 10px 30px;
+      }
+    }
+    .top-vector {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 50%;
+      width: 90%;
+      background-image: url("../../../public/images/loginbg1.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: left;
+      @include media(">=phone", "<=480px") {
+        height: 15%;
+        width: 40%;
+      }
+    }
+    .btm-vector {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 40%;
+      width: 100%;
+      background-image: url("../../../public/images/loginbg2.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: right;
+      @include media(">=phone", "<=480px") {
+        height: 50%;
+        width: 90%;
+      }
+    }
+    .wrap {
+      height: 100%;
+      width: 1000px;
+      margin: 0 auto;
+      @include media("<=xlarge") {
+        width: 960px;
+        margin: 0 auto;
+      }
+      @include media("<=large") {
+        width: 100%;
+        padding: 0px 8%;
+      }
+      @include media("<=desktop") {
+        width: 100%;
+        padding: 0px 8%;
+      }
+      @include media("<=tablet") {
+        width: 100%;
+        padding: 0px 8%;
+      }
+      @include media(">=phone", "<=480px") {
+        padding: 0px 5%;
+        flex-direction: column;
+      }
+      .main-box {
+        @include media("<=tablet") {
+          flex-direction: column;
+          gap: 40px;
+        }
+        .left-side {
+          flex: 1;
+          @include media(">=phone", "<=480px") {
+            flex: 0.4;
+          }
+          .logo {
+            .img {
+              height: 90px;
+              @include media(">=phone", "<=480px") {
+                height: 60px;
+              }
+            }
+          }
+        }
+        .right-side {
+          flex: 1;
+          @include media("<=tablet") {
+            width: 100%;
+            margin-bottom: 30px;
+          }
+          @include media("<=phoneH") {
+            width: 100%;
+            margin-bottom: 12px;
+          }
+          .form-box {
+            z-index: 100;
+            width: 100%;
+
+            .sec-tag {
+              font-weight: 600;
+              font-size: 24px;
+              line-height: 36px;
+              color: #5f5f5f;
+              margin-bottom: 20px;
+            }
+            .login-vector {
+              padding: 10px 0;
+            }
+            .login-form {
+              .btn-login {
+                width: 100%;
+                border-radius: 8px;
+                font-family: "Inter";
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                text-align: center;
+                color: #ffffff;
+                padding: 12px 18px;
+              }
+              .have-account {
+                cursor: pointer;
+                margin-top: 8px;
+                font-family: "Inter";
+                font-style: normal;
+                font-weight: 400;
+                font-size: 17px;
+                line-height: 21px;
+                text-align: center;
+                color: #000000;
+              }
+            }
+            .i-field {
+              gap: 16px;
+
+              .txt {
+                border: 2px solid #bfbfbf;
+                border-radius: 13px;
+                padding: 10px 8px;
+                width: 100%;
+                @include anim;
+                &:focus {
+                  border-color: $themeColor;
+                }
+              }
+              .action {
+                .btn {
+                  padding: 14px 20px;
+                  width: 100%;
+                  border-radius: 13px;
+                  @include media(">=phone", "<=480px") {
+                    padding: 8px 20px;
+                    border-radius: 10px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

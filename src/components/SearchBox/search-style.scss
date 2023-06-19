@@ -1,0 +1,32 @@
+.search-box {
+  background: #ffffff;
+  border: 2px solid #d9d9d9;
+  border-radius: 10px;
+  padding: 6px 10px;
+  width: 350px;
+  @include anim;
+  &:focus-within {
+    border-color: $themeColor;
+  }
+  .txt {
+  }
+  .icon {
+      cursor: pointer;
+      padding: 0 6px;
+  }
+}
+
+.mobile-viewSearch{
+  padding: 30px 20px;
+  .cross-icon{
+    margin-right: 16px;
+    svg{
+      height: 20px;
+      width: 20px;
+    }
+  }
+  .search-box{
+    border-radius: 8px;
+    padding: 12px 10px;
+  }
+}

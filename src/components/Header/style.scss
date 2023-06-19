@@ -1,0 +1,131 @@
+// Header
+.header-camp {
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-height: 90px;
+  padding: 25px 0px;
+  position: sticky;
+  background: #ffffff;
+  .wrap {
+    gap: 30px;
+    .left {
+      flex: 1;
+      @include media("<=tablet") {
+        display: none;
+      }
+      .logo-img {
+        height: 62px;
+      }
+      .menu-list {
+        margin-left: 45px;
+        gap: 30px;
+
+        .menu-item {
+          font-weight: 400;
+          font-size: 20px;
+          line-height: 34px;
+          color: #000000;
+          border-bottom: 3px solid transparent;
+          &.active {
+            font-weight: 600;
+            border-color: $themeColor;
+          }
+        }
+      }
+    }
+    .right {
+      @include media("<=tablet") {
+        display: none;
+      }
+      .desktop-search-box {
+        .search-box {
+          width: 240px;
+        }
+      }
+      .user-info {
+        position: relative;
+        .profile-image {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          background-color: #e2e2e2;
+          background-repeat: no-repeat !important;
+          background-size: cover !important;
+          background-position: center !important;
+        }
+        .dropdown-block {
+          .user-name {
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            color: #000000;
+            margin-left: 8px;
+          }
+        }
+
+        .manueProfile {
+          background: #ffffff;
+          border: 2px solid #d9d9d9;
+          width: 200px;
+          position: absolute;
+          top: 65px;
+          right: -20px;
+          padding: 20px 16px;
+          box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 16px;
+          border-radius: 10px;
+          &.show {
+            @include dropDownAnim;
+          }
+          .p_menu_item {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 18px;
+            text-align: center;
+            color: #000000;
+            margin-bottom: 18px;
+            padding: 6px 0;
+            cursor: pointer;
+            .profile-image {
+              margin-right: 8px;
+              height: 38px;
+              width: 38px;
+            }
+            .p-icon {
+              margin-right: 8px;
+            }
+            &:hover {
+              color: $themeColor;
+            }
+            &:first-child {
+              padding: 12px 0;
+              border-bottom: 1px solid #dadada;
+            }
+            &:last-child {
+              margin-bottom: 0;
+              color: $themeColor;
+            }
+          }
+        }
+      }
+    }
+    .mobile-view {
+      width: 100%;
+      display: none;
+      @include media("<=tablet") {
+        display: flex;
+      }
+      .menu-icon {
+      }
+      .logo {
+        .logo-img {
+          height: 48px;
+        }
+      }
+    }
+  }
+}

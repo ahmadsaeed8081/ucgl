@@ -1,0 +1,146 @@
+@import "./Colors.scss";
+@import "./Props.scss";
+@import "./media.scss";
+@import "../components/Header/style.scss";
+@import "../components/Footer/style.scss";
+@import "../components/SearchBox/search-style.scss";
+@import "../components/ConnectWallet/connectwallet.scss";
+@import "../components/PaymentWithDraw/payment-withdraw.scss";
+@import "../components/VerificationPopup/verification-style.scss";
+@import "../components/Sidebar/style.scss";
+@import "../components/ProductUpload/productupload-style.scss";
+@import "../components/Packages/packages-style.scss";
+@import "../components/LoginPackages/login-packages-style.scss";
+@import "../components/UserTypePopup/user-type-style.scss";
+@import "../Pages/Login/login-style.scss";
+@import "../Pages/Home/style.scss";
+@import "../Pages/Products/products-style.scss";
+@import "../Pages/Profile/profile-style.scss";
+
+.font,
+body {
+  font-family: "Inter", sans-serif;
+}
+
+@mixin bgImage($radius: 50%) {
+  height: 100%;
+  width: 100%;
+  border-radius: $radius;
+  background-color: #e2e2e2;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+@mixin dropDownAnim($duration: 0.3s) {
+  animation-name: drop;
+  animation-duration: $duration;
+  transform-origin: top;
+}
+
+@keyframes drop {
+  0% {
+    transform: scaleY(0.5);
+    opacity: 0;
+  }
+}
+
+.wrapWidth {
+  width: 1200px;
+  margin: 0 auto;
+  @include media("<=xlarge") {
+    width: 1200px;
+    margin: 0 auto;
+  }
+  @include media("<=large") {
+    width: 100%;
+    padding: 0px 6%;
+  }
+  @include media("<=desktop") {
+    width: 100%;
+    padding: 0px 3%;
+  }
+  @include media("<=tablet") {
+    width: 100%;
+    padding: 0px 3%;
+  }
+  @include media(">=phone", "<=480px") {
+    padding: 0px 5%;
+  }
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.row2 {
+  grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+//Radio Button
+.radio-btn {
+  height: 22px;
+  width: 22px;
+  min-width: 22px;
+  border: 1px solid #c4c4c4;
+  border-radius: 50%;
+  margin-right: 12px;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    min-width: 15px;
+    background: $themeColor;
+    border-radius: 50%;
+    left: 3px;
+    top: 3px;
+    visibility: hidden;
+    opacity: 0;
+    @include anim;
+  }
+  &.on {
+    border-color: $themeColor;
+    &:before {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+// Loader
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loader-cmp {
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(7px);
+  background: rgba(255, 255, 255, 0.65);
+  z-index: 9999999999;
+  overflow: hidden;
+  position: fixed;
+  inset: 0;
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    &:after {
+      content: " ";
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin: 8px;
+      border-radius: 50%;
+      border: 6px solid $themeColor;
+      border-color: $themeColor transparent $themeColor transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+  }
+}

@@ -1,0 +1,120 @@
+.product-upload-popup {
+  width: 540px;
+  min-height: 200px;
+  border-radius: 10px;
+  box-shadow: 0 10px 13px -7px #000, 5px 5px 15px 5px transparent;
+  max-width: 540px;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 10px;
+  @include media("<=phoneH") {
+    width: 300px;
+    height: 100%;
+    padding: 16px;
+  }
+  .product-upload-popup-wrapper {
+    .popup-hdr {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 36px;
+      color: #000000;
+      margin-bottom: 40px;
+    }
+    .form-block {
+      .grid_box {
+        grid-gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include media("<=phoneH") {
+          grid-gap: 0px;
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+      .upload-img {
+        margin-bottom: 20px;
+        .image-box {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background: #d9d9d9;
+          @include media("<=phoneH") {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        .profile-image {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background-color: #e2e2e2;
+          background-repeat: no-repeat !important;
+          background-size: cover !important;
+          background-position: center !important;
+          @include media("<=phoneH") {
+            width: 80px;
+            height: 80px;
+          }
+        }
+        .image-action {
+          margin-left: 20px;
+          .img-lbl {
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 30px;
+            color: #000000;
+            margin-bottom: 8px;
+            @include media("<=phoneH") {
+              margin-bottom: 4px;
+              font-size: 16px;
+            }
+          }
+          .btn-upload {
+            width: max-content;
+            font-weight: 400;
+            font-size: 13px;
+            padding: 8px 26px;
+            border-radius: 10px;
+          }
+        }
+        .select-file {
+          display: none;
+        }
+      }
+
+      .input-field {
+        margin-bottom: 24px;
+        .lbl {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 18px;
+          color: #9a9a9a;
+          margin-bottom: 8px;
+        }
+        .txt {
+          width: 100%;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 30px;
+          color: #000000;
+          background: #ffffff;
+          border: 2px solid #c8c8c8;
+          border-radius: 10px;
+          padding: 6px 12px;
+          &:focus {
+            border-color: $themeColor;
+          }
+        }
+      }
+      .btn {
+        padding: 12px 40px;
+        border-radius: 10px;
+      }
+    }
+  }
+}

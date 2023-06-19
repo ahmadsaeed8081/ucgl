@@ -1,0 +1,55 @@
+.user-type-comp {
+  height: 100%;
+  width: 100%;
+  min-width: 400px;
+  padding: 30px;
+  background: #fff;
+  @include media("<=phoneH") {
+    min-width: 100%;
+    min-height: 260px;
+    padding: 20px;
+  }
+  .page-hdr {
+    .sec-tag {
+      font-family: "Poppins";
+      font-style: normal;
+      font-weight: 600;
+      font-size: 20px;
+      color: #353535;
+      text-transform: uppercase;
+      text-align: center;
+    }
+  }
+  .options-sec {
+    gap: 30px;
+    margin-top: 100px;
+    @include media("<=phoneH") {
+      margin-top: 80px;
+    }
+    .row {
+      margin-top: 0;
+      width: 100%;
+      padding: 10px 5px;
+      border-radius: 8px;
+      &:hover {
+        background: #f2f2f2;
+        @include anim;
+        cursor: pointer;
+      }
+      .type {
+        .radio-btn {
+          border-radius: 50%;
+          border: 1px solid #777;
+        }
+        .lbl {
+          margin-left: 10px;
+          font-family: "Poppins";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          color: #353535;
+        }
+      }
+    }
+  }
+}
