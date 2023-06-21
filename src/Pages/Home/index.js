@@ -189,6 +189,7 @@ const Main = (props) => {
       set_userId(user_id);
       // console.log("total_ref " + props.response.firstName);
       set_uplinerId(upliner_id);
+      console.log("here is the res "+props.response);
       set_response(props.response);
       setLoader(false);
     } catch (error) {
@@ -212,7 +213,7 @@ const Main = (props) => {
         return;
       }
 
-      let package_price = packages_price[_package];
+      let package_price = packages_price[_package]-(Number(user.personal_volume) / 10 ** 6);
 
       if (Number(package_price) > Number(props.balance)) {
         alert("You dont have enough USDT to buy");
@@ -363,8 +364,8 @@ const Main = (props) => {
                     <div className="box-lbl">Pending Balance</div>
                     <div className="amount">
                       $
-                      {Number(withdrawable_earning) -
-                        Number(user.total_withdraw) / 10 ** 6}
+                      {(Number(withdrawable_earning) -
+                        Number(user.total_withdraw)) / 10 ** 6}
                     </div>
                   </div>
                 </div>
@@ -397,7 +398,7 @@ const Main = (props) => {
                   <div className="box-btm flex flex-col">
                     <div className="box-lbl">My ID: {userId}</div>
 
-                    {/* <div className="flex items-center">
+                    <div className="flex items-center">
                       <div className="amount">
                         {response.firstName != ""
                           ? response.firstName
@@ -408,7 +409,7 @@ const Main = (props) => {
                           <CheckIcon />
                         </div>
                       ) : null}
-                    </div> */}
+                    </div>
                   </div>
                 </div>
 

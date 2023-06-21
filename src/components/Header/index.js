@@ -6,14 +6,39 @@ import SearchModal from "../SearchModal";
 import { logout } from "../../store/reducers/globalReducer";
 import SearchBox from "../../components/SearchBox";
 import MobileViewSearch from "../../components/SearchBox/MobileViewSearch";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import { setUserToken } from "../../store/reducers/globalReducer";
 
 const Header = ({ openSidebar, setOpenSidebar }) => {
   const dispatch = useDispatch();
   const [showDropDown, setShowDropDown] = useState(false);
   const [openSearchModel, setOpenSearchModel] = useState(false);
   const userLogout = () => {
-    dispatch(logout("userToken"));
+    dispatch(setUserToken(false));
   };
+  async function Sign_out() {
+    let provider;
+    try{
+       provider = new WalletConnectProvider({
+        rpc: {
+          137:"https://polygon-mainnet.g.alchemy.com/v2/bf3cnZO2AQyu_Kv4eBx6uI0Slhs5GhMv"
+        },
+        chainId: 137,
+      });
+    }
+    catch{}
+
+     try {
+       await provider.disconnect();
+       dispatch(setUserToken(false));
+
+       window.location.reload("/");
+     } catch {
+    dispatch(setUserToken(false));
+           window.location.reload("/");
+ 
+     }
+   }
 
   useEffect(() => {
     document.addEventListener("click", () => {
@@ -41,9 +66,9 @@ const Header = ({ openSidebar, setOpenSidebar }) => {
           </div>
         </div>
         <div className="right flex items-center justify-end">
-          <div className="desktop-search-box flex mx-3">
+          {/* <div className="desktop-search-box flex mx-3">
             <SearchBox />
-          </div>
+          </div> */}
           <div className="user-info flex items-center">
             <div
               className="profile-image"
@@ -79,7 +104,7 @@ const Header = ({ openSidebar, setOpenSidebar }) => {
               </NavLink>
               <div
                 className="p_menu_item flex items-center"
-                onClick={userLogout}
+                onClick={Sign_out}
               >
                 <div className="p-icon flex items-center justify-center">
                   <LogoutIcon />

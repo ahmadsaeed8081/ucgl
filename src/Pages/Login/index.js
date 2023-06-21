@@ -75,6 +75,35 @@ const Login = (props) => {
     set_refId(params.get("ref"));
   });
 
+  async function Sign_out() {
+    let provider;
+    try{
+       provider = new WalletConnectProvider({
+        rpc: {
+          137:"https://polygon-mainnet.g.alchemy.com/v2/bf3cnZO2AQyu_Kv4eBx6uI0Slhs5GhMv"
+        },
+        chainId: 137,
+      });
+    }
+    catch{
+
+    }
+     try {
+       await provider.disconnect();
+
+       window.location.reload("/");
+     } catch {
+           window.location.reload("/");
+ 
+     }
+   }
+
+
+
+
+
+
+  
   async function Connect_Wallet(id) {
     try {
       let provider;
@@ -169,12 +198,16 @@ const Login = (props) => {
 
         const networkId = await web3.eth.net.getId();
         console.log("yguygy7 " + networkId);
+
         if (networkId == NETWORK_ID) {
           accounts = await web3.eth.getAccounts();
           set_address(accounts[0]);
           const contract = new web3.eth.Contract(cont_abi, cont_address);
           const contract1 = new web3.eth.Contract(tokenABI, Token_address);
+          console.log("yguygy7 " +accounts[0] );
+
           let balance = await contract1.methods.balanceOf(accounts[0]).call();
+          console.log("yguygy7 " + networkId);
 
           let matic = await web3.eth.getBalance(accounts[0]);
           balance = balance / 10 ** 6;
@@ -187,13 +220,20 @@ const Login = (props) => {
           set_web3(web3);
           set_contract(contract);
           set_contract1(contract1);
+          setOpen(false);
+          setOpenWallet(false);
+
         } else {
+
+          console.log("object net change");
           if (provider.wc.peerMeta.name == "MetaMask") {
+            console.log("object net change 45");
+
             await provider.request({
               method: "wallet_switchEthereumChain",
-              params: [{ chainId: "0x38" }],
+              params: [{ chainId: "0x89" }],
             });
-            Connect_Wallet(id);
+            // Connect_Wallet(id);
           } else {
             setOpenWallet(false);
 
@@ -237,16 +277,20 @@ const Login = (props) => {
         `https://ucanglobal-be.vercel.app/api/user/${address.toLowerCase()}`
       ).then((response) => {
         console.log(response);
-
-        if (response.data.emailVerified == true) {
-          // alert("alert verify ")
-          set_is_Verified(true);
-          res = response.data;
+        if(response.data!=null)
+        {
+          if (response.data.emailVerified == true) {
+            alert("alert verify ")
+            set_is_Verified(true);
+            res = response.data;
+          }
         }
+
       });
+      console.log("res in ver "+res);
       return res;
     } catch (e) {
-      console.log(e.response);
+      // console.log(e.response);
     }
   }
 
@@ -256,7 +300,7 @@ const Login = (props) => {
     if (Is_register) {
       const res = await check_Verified();
 
-      console.log(res);
+      console.log("res in logn "+res);
       props.set_user(
         address,
         web3,
@@ -402,8 +446,8 @@ const Login = (props) => {
               </div>
             ) : (
               <>
-                <div className="btn-connect button">
-                  <p>{address.slice(0, 4) + "..." + address.slice(38, 44)}</p>
+                <div className="btn-connect button" onClick={Sign_out}>
+                  <p>Sign out</p>
                 </div>
               </>
             )}
