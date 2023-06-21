@@ -37,7 +37,20 @@ const Login = (props) => {
     dispatch(setUserToken(true));
     navigate("/dashboard/home");
   };
-
+  let res = {
+    userAddress: {
+      country: "",
+      address: "",
+    },
+    _id: "",
+    firstName: "",
+    lastName: "",
+    wAddress: "",
+    email: "",
+    age: 0,
+    emailVerified: false,
+    __v: 0,
+  };
   useEffect(() => {
     // if (memberType !== null) {
     //   setOpenLoginPackages(true);
@@ -258,20 +271,7 @@ const Login = (props) => {
   //   }
 
   async function check_Verified() {
-    let res = {
-      userAddress: {
-        country: "",
-        address: "",
-      },
-      _id: "",
-      firstName: "",
-      lastName: "",
-      wAddress: "",
-      email: "",
-      age: 0,
-      emailVerified: false,
-      __v: 0,
-    };
+
     try {
       await Axios.get(
         `https://ucanglobal-be.vercel.app/api/user/${address.toLowerCase()}`
@@ -398,7 +398,8 @@ const Login = (props) => {
               matic,
               false,
               contract,
-              contract1
+              contract1,
+              res
             );
             dispatch(setUserToken(true));
 
