@@ -39,6 +39,8 @@ const Main = (props) => {
   const [verify, set_verify] = useState(false);
   const [time, set_time] = useState(false);
   const [curr_time, set_curr_time] = useState(false);
+  const [rank, set_rank] = useState("");
+
 
   const [response, set_response] = useState({
     userAddress: {
@@ -64,7 +66,7 @@ const Main = (props) => {
   const [lsb, set_lsb] = useState("0");
   const [rsb, set_rsb] = useState("0");
 
-  const [curr_package, set_curr_package] = useState(null);
+  const [curr_package, set_curr_package] = useState("");
 
   const [direct_ref, set_direct_ref] = useState("");
 
@@ -95,6 +97,217 @@ const Main = (props) => {
     getData();
   }, [props.provider, props.address]);
 
+
+
+
+
+
+  function check_pack(id)
+  {
+    if(id==0)
+    {
+      set_curr_package("Associate")
+    }
+    else if(id==1)
+    {
+      set_curr_package("Basic")
+  
+    }
+    else if(id==2)
+    {
+      set_curr_package("Bronze")
+  
+    }
+    else if(id==3)
+    {
+      set_curr_package("Silver")
+  
+    }
+    else if(id==4)
+    {
+      set_curr_package("Gold")
+  
+    }
+    else if(id==5)
+    {
+      set_curr_package("Platinum")
+  
+    }
+    else if(id==6)
+    {
+      set_curr_package("Platinum Plus")
+  
+    }
+    else if(id==7)
+    {
+      set_curr_package("Business")
+  
+    }
+    else if(id==8)
+    {
+      set_curr_package("Business Plus")
+  
+    }
+    else if(id==9)
+    {
+      set_curr_package("Professional")
+  
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+  function check_rank(id)
+  {
+    if(id==0)
+    {
+      set_rank("New member")
+    }
+    else if(id==1)
+    {
+      set_rank("Associate")
+  
+    }
+    else if(id==2)
+    {
+      set_rank("Director")
+  
+    }
+    else if(id==3)
+    {
+      set_rank("Director 500")
+  
+    }
+    else if(id==4)
+    {
+      set_rank("Director 1000")
+  
+    }
+    else if(id==5)
+    {
+      set_rank("Director 2000")
+  
+    }
+    else if(id==6)
+    {
+      set_rank("Executive")
+  
+    }
+    else if(id==7)
+    {
+      set_rank("Senior Executive")
+  
+    }
+    else if(id==8)
+    {
+      set_rank("Regional Executive")
+  
+    }
+    else if(id==9)
+    {
+      set_rank("Bronze Elite Executive")
+  
+    }
+    else if(id==10)
+    {
+      set_rank("Silver Elite Executive")
+  
+    }
+  
+    else if(id==11)
+    {
+      set_rank("Gold Elite Executive")
+  
+    }  
+    else if(id==12)
+    {
+      set_rank("Platinum Elite Executive")
+  
+    }
+  
+    else if(id==13)
+    {
+      set_rank("Emerald Executive")
+  
+    }
+      else if(id==14)
+    {
+      set_rank("Double Emerald Executive")
+  
+    }
+    else if(id==15)
+    {
+      set_rank("Triple Emerald Executive")
+  
+    }
+    else if(id==16)
+    {
+      set_rank("Diamond Executive")
+  
+    }
+    else if(id==17)
+    {
+      set_rank("Double Diamond Executive")
+  
+    }
+    else if(id==18)
+    {
+      set_rank("Triple Diamond Executive")
+  
+    }
+    else if(id==19)
+    {
+      set_rank("Presidential Executive")
+  
+    }
+    else if(id==20)
+    {
+      set_rank("1 - Star Presidential Executive")
+  
+    }
+    else if(id==21)
+    {
+      set_rank("2 - Star Presidential Executive")
+  
+    }
+  
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   async function getData() {
     if (!props.isWalletConnected) {
       return;
@@ -123,12 +336,23 @@ const Main = (props) => {
         .call();
       console.log("object7");
 
+      let my_rank = await props.contract.methods
+      .find_rank(props.address)
+      .call();
+
+
+
+      let curr_pack = await props.contract.methods
+      .curr_packageOf(props.address)
+      .call();
+    console.log("object7 "+curr_pack);
+    check_pack(curr_pack)
       let upliner_id = await props.contract.methods.addresstoId(upliner).call();
       let time = await props.contract.methods.time_manager().call();
 
-      let curr_package = await props.contract.methods
-        .curr_packageOf(props.address)
-        .call();
+      // let curr_package = await props.contract.methods
+      //   .curr_packageOf(props.address)
+      //   .call();
       console.log("object8");
       let curr_time = await props.contract.methods.curr_time().call();
 
@@ -162,8 +386,12 @@ const Main = (props) => {
         .call();
 
       let users = await props.contract.methods.user(props.address).call();
+
+
+        console.log("my current rank "+my_rank[my_rank.length-1]);
+      check_rank(my_rank[my_rank.length-1])
       set_user(users);
-      set_curr_package(curr_package);
+      // set_curr_package(curr_package);
       set_time(time);
       set_withdrawable_earning(total_earning_withdrawabl);
       set_sponsored(sponsored_earning);
@@ -235,6 +463,16 @@ const Main = (props) => {
       }
     } catch {}
   }
+
+
+  
+
+
+
+
+
+
+
 
   async function handleWithdraw(amount) {
     console.log("object withdraw");
@@ -485,6 +723,39 @@ const Main = (props) => {
                   <div className="box-btm flex flex-col">
                     <div className="box-lbl">Left Side balance</div>
                     <div className="amount">${Number(lsb) / 10 ** 6}</div>
+                  </div>
+                </div>
+                <div className="grid-box flex flex-col">
+                  <div className="box-top flex items-center">
+                    <div className="icon">
+                      <Icon8 />
+                    </div>
+                  </div>
+                  <div className="box-btm flex flex-col">
+                    <div className="box-lbl">Matching Bonus</div>
+                    <div className="amount">${Number(matchingBonus.total_MB_income) / 10 ** 6}</div>
+                  </div>
+                </div>
+                <div className="grid-box flex flex-col">
+                  <div className="box-top flex items-center">
+                    <div className="icon">
+                      <Icon8 />
+                    </div>
+                  </div>
+                  <div className="box-btm flex flex-col">
+                    <div className="box-lbl">Current Rank</div>
+                    <div className="amount">{rank}</div>
+                  </div>
+                </div>
+                <div className="grid-box flex flex-col">
+                  <div className="box-top flex items-center">
+                    <div className="icon">
+                      <Icon8 />
+                    </div>
+                  </div>
+                  <div className="box-btm flex flex-col">
+                    <div className="box-lbl">Current Package</div>
+                    <div className="amount">{curr_package}</div>
                   </div>
                 </div>
               </div>
