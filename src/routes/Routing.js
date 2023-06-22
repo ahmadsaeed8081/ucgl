@@ -79,7 +79,7 @@ const Routing = () => {
 
   }
   catch{
-    // window.location.reload("/");
+    window.location.reload("/");
 
   }
 
